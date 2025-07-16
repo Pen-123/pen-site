@@ -2,18 +2,19 @@ const archivesBtn = document.getElementById('archives-btn');
 const archivesList = document.getElementById('archives-list');
 const logContent = document.getElementById('log-content');
 
-
 const repoOwner = 'Pen-123'; 
 const repoName = 'pen-site';                
 const logsPath = 'data/logs';               
+
+let currentOpenFile = null; // Track which file is open
 
 archivesBtn.addEventListener('click', async () => {
   archivesList.innerHTML = 'Loading archives...';
   logContent.style.display = 'none';
   logContent.innerText = '';
 
-  // For now, hardcoding file list — update with API later for dynamic
-  const logFiles = ['raw-pen-logs-001.md'];
+  // Now listing TWO log files
+  const logFiles = ['raw-pen-logs-001.md', 'raw-pen-logs-002.md'];
 
   archivesList.innerHTML = '';
   logFiles.forEach(file => {
@@ -26,10 +27,20 @@ archivesBtn.addEventListener('click', async () => {
 });
 
 async function loadLogFile(filename) {
+  if (currentOpenFile === filename) {
+    // Close if same file clicked
+    logContent.style.display = 'none';
+    logContent.innerText = '';
+    currentOpenFile = null;
+    return;
+  }
+
+  currentOpenFile = filename;
   logContent.style.display = 'block';
   logContent.innerText = 'Loading file content...';
 
-  const url = `https://raw.githubusercontent.com/Pen-123/pen-site/main/data/logs/raw-pen-logs-001.md`;
+  // Dynamic URL based on clicked filename
+  const url = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${logsPath}/${filename}`;
 
   try {
     const res = await fetch(url);
