@@ -50,6 +50,23 @@ p {
   max-width: 600px;
 }
 
+#archives-btn {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+#archives-btn:hover {
+  background-color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
 .warning {
   margin: 2rem 0;
   background-color: var(--accent-color);
@@ -91,4 +108,24 @@ main {
   to {
     opacity: 1;
   }
+}
+
+/* Log file buttons inside archives list */
+.log-file-btn {
+  margin: 0.3rem 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.log-file-btn:hover {
+  background-color: var(--accent-color);
+  color: #fff;
 }
