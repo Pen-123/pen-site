@@ -29,7 +29,7 @@ async function loadLogFile(filename) {
   logContent.style.display = 'block';
   logContent.innerText = 'Loading file content...';
 
-  const url = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${logsPath}/${filename}`;
+  const url = `https://raw.githubusercontent.com/Pen-123/pen-site/main/data/logs/raw-pen-logs-001.md`;
 
   try {
     const res = await fetch(url);
