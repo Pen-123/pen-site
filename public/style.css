@@ -3,11 +3,11 @@
 
 :root {
   --bg-color: #121217;
-  --primary-color: #3ddbd9;
-  --accent-color: #7c3aed;
+  --primary-color: #00d4ff;   /* Electric cyan blue */
+  --accent-color: #0080ff;    /* Deep blue accent */
   --text-color: #e0e0e0;
   --text-muted: #7a7a8c;
-  --shadow-color: rgba(61, 219, 217, 0.3);
+  --shadow-color: rgba(0, 212, 255, 0.3);
 }
 
 * {
@@ -35,7 +35,7 @@ h1, h2 {
 h1 {
   font-size: 2.8rem;
   color: var(--primary-color);
-  text-shadow: 0 0 6px var(--primary-color);
+  text-shadow: 0 0 8px var(--primary-color);
 }
 
 h2 {
@@ -52,7 +52,7 @@ p {
 
 .warning {
   margin: 2rem 0;
-  background-color: #7c3aed;
+  background-color: var(--accent-color);
   color: #fff;
   padding: 1rem 1.5rem;
   border-radius: 12px;
