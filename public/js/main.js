@@ -6,14 +6,25 @@ const repoOwner = 'Pen-123';
 const repoName = 'pen-site';                
 const logsPath = 'data/logs';               
 
-let currentOpenFile = null; // Track which file is open
+let currentOpenFile = null; // Track open log file
+let archivesVisible = false; // Track archives list visibility
 
 archivesBtn.addEventListener('click', async () => {
+  if (archivesVisible) {
+    // Hide archives list & any open log content
+    archivesList.innerHTML = '';
+    logContent.style.display = 'none';
+    logContent.innerText = '';
+    archivesVisible = false;
+    currentOpenFile = null;
+    return;
+  }
+
+  archivesVisible = true;
   archivesList.innerHTML = 'Loading archives...';
   logContent.style.display = 'none';
   logContent.innerText = '';
 
-  // Now listing TWO log files
   const logFiles = ['raw-pen-logs-001.md', 'raw-pen-logs-002.md'];
 
   archivesList.innerHTML = '';
@@ -28,7 +39,7 @@ archivesBtn.addEventListener('click', async () => {
 
 async function loadLogFile(filename) {
   if (currentOpenFile === filename) {
-    // Close if same file clicked
+    // Close log content if same file clicked
     logContent.style.display = 'none';
     logContent.innerText = '';
     currentOpenFile = null;
@@ -39,7 +50,6 @@ async function loadLogFile(filename) {
   logContent.style.display = 'block';
   logContent.innerText = 'Loading file content...';
 
-  // Dynamic URL based on clicked filename
   const url = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${logsPath}/${filename}`;
 
   try {
