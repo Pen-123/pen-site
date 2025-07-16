@@ -25,7 +25,7 @@ archivesBtn.addEventListener('click', async () => {
   logContent.style.display = 'none';
   logContent.innerText = '';
 
-  const logFiles = ['raw-pen-logs-001.md', 'raw-pen-logs-002.md', 'raw-pen-logs-003.md'];
+  const logFiles = ['raw-pen-logs-001.md', 'raw-pen-logs-002.md', 'raw-pen-logs-003.md', 'raw-pen-logs-004.md'];
 
   archivesList.innerHTML = '';
   logFiles.forEach(file => {
